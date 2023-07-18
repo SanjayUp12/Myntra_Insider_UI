@@ -23,7 +23,13 @@ class HomePage extends StatelessWidget {
               Icons.search,
               color: Colors.black,
             ),
+            SizedBox(
+              width: 5,
+            ),
             Icon(Icons.favorite_outline, color: Colors.black),
+            SizedBox(
+              width: 5,
+            ),
             Icon(Icons.shopping_bag_outlined, color: Colors.black),
           ],
         ),
@@ -34,6 +40,7 @@ class HomePage extends StatelessWidget {
           Container(
             color: Colors.black,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image(
                   image: AssetImage('images/myntraInsider.webp'),
@@ -49,7 +56,33 @@ class HomePage extends StatelessWidget {
                 ),
                 Text('Supercoins with every purchase and much',
                     style: kInsiderBodyStyle),
-                Text('more. Log in now', style: kInsiderBodyStyle),
+                Text('more. Log in now!', style: kInsiderBodyStyle),
+                SizedBox(height: 20),
+                Text(
+                  'New Goal Criteria',
+                  style: TextStyle(color: Colors.white, fontSize: 19),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  color: Colors.blueGrey.shade900,
+                  width: MediaQuery.of(context).size.width * 100.00,
+                  height: MediaQuery.of(context).size.width * 0.25,
+                  child: Column(
+                    children: [
+                      NewGoalCriteriaWidget(
+                        text1: '₹0 You\'ve spent',
+                        text2: '₹7000 Goal',
+                      ),
+                      Divider(
+                        height: 2,
+                        thickness: 1,
+                        color: Colors.white,
+                      ),
+                      NewGoalCriteriaWidget(
+                          text1: '0/5 Your orders', text2: '5 Goal'),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -81,6 +114,37 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class NewGoalCriteriaWidget extends StatelessWidget {
+  NewGoalCriteriaWidget({this.text1, this.text2});
+  String? text1;
+  String? text2;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(width: 10),
+        Image(
+          image: AssetImage(
+            'images/crown.png',
+          ),
+          height: 40,
+          width: 40,
+        ),
+        SizedBox(width: 60),
+        Text(
+          '$text1',
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+        SizedBox(width: 60),
+        Text(
+          text2.toString(),
+          style: TextStyle(color: Colors.white, fontSize: 18),
+        ),
+      ],
     );
   }
 }
